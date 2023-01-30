@@ -1,0 +1,42 @@
+%bisection
+clc;clear;
+tic;
+syms x;
+%input 3*x^2 + 2*x + 1
+f1 = 0;
+f2 = 0;
+p=input('Input Persamaan                    = ');
+e = input('Masukkan toleransi error         = ');
+iterasi = 1;
+while(f1 * f2 >= 0)
+    a=input('Masukkan Nilai a = ');
+    b=input('Masukkan Nilai b = ');
+    %masukkan a dan b ke dlm fungsi
+    f1=subs(p,x,a);
+    f2=subs(p,x,b);
+    if(f1 * f2 >= 0)
+        fprintf('f1 * f2 belum memenuhi syarat,. masukkan angka lain\n\n');
+    end
+end
+ 
+%cari c dari titik tengah a dan b
+c=(a+b)/2;
+f3=subs(p,x,c);
+%nilai toleransi kesalahan
+%e=10^-3;
+while abs(f3)>e
+   if (f1*f3)<0
+       b=c;
+   else
+       a=c;
+   end
+   f1=subs(p,x,a);
+   f2=subs(p,x,b);
+   c=(a+b)/2;
+   f3=subs(p,x,c);   
+   iterasi = iterasi + 1;
+   fprintf('iterasi ke = %d\tf(a) = %8.8f\tf(b) = %8.8f\troot = %8.8f\n', iterasi, f1, f2, c);
+end
+   % fprintf('c = %6.5f\n',c);
+ezplot(p);
+grid;

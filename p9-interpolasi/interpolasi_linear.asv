@@ -1,0 +1,15 @@
+clc;
+clear;
+
+disp('INTERPOLASI LINIER');
+disp('-------------------------')
+%variabel bebas batas bawah (waktu, jumlah penduduk)
+y0=input('masukkan y0 : ');
+%variabel bebas batas atas (waktu, jumlah penduduk)
+y1=input('masukkan y1 : ');
+% variabel terikat (tahun, jam, tanggal)
+x0=input('masukkan x0 : ');
+% variabel terikat (tahun, jam, tanggal)
+x1=input('masukkan x1 : ');
+
+P=y0+

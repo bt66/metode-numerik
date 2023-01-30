@@ -1,0 +1,34 @@
+%secant
+clc;
+clear;
+syms x;
+e=input ('Masukkan Toleransi Error : ');
+maxIt=input('MAX iterasi : ');
+x0= input ('Masukkan Tebakan 1 : ');
+x1= input('Masukkan Tebakan 2 :');
+
+p=('input fungsi : ');
+f = inline(p,'x');
+i = 1;
+error = abs(x1-x0);
+fprintf(' %d \t%.10f',error);
+while error > e
+    if i <= maxIt
+        return
+    end
+    x2 = [x1-((f(x1)*(x1-x0)/f(x1)-f(x0)))];
+    error = abs(x2-x1);
+    
+    fprintf(' %d \t%.10f \t%.10f \t%.10f \t%.10f \t%.10f\n',i,x2,x1,x0,f(x2),error);
+    
+    
+    x0=x1;
+    x1=x2;
+    i = i + 1;
+end
+
+ezplot(p);
+grid;
+hold on;
+
+
